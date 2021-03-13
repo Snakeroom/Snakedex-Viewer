@@ -1,0 +1,46 @@
+body {
+	background-color: #34373e;
+	font-family: sans-serif;
+	color: #ddd;
+}
+
+h1, h2 {
+	font-family: 'Ubuntu';
+}
+
+.snake {
+	display: flex;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.snake > * {
+	padding: 8px;
+}
+
+.snake:not(:last-child) {
+	border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+}
+
+.snake > .imagewrapper {
+	width: 100px;
+	min-height: 100px;
+
+	background-color: rgba(0, 0, 0, 0.1);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.snake > .imagewrapper > img {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.snake > .content > h2 {
+	margin: 0;
+	margin-bottom: 6px;
+}
+
+.snake > .content > p {
+	margin: 0;
+}
