@@ -1,3 +1,6 @@
+/**
+ * @param {Object} snake The snake to get the header from.
+ */
 function getSnakeHeader(snake) {
 	if (snake.name && snake.snakeNumber) {
 		return snake.name + " — #" + snake.snakeNumber;

@@ -8,6 +8,9 @@ const getSnakeHeader = require("./utils/get-snake-header.js");
 const getSnakeImage = require("./utils/get-snake-image.js");
 const snakedexUrl = require("./utils/snakedex-url.js");
 
+/**
+ *
+ */
 async function fetchAndAdd() {
 	const response = await fetch(snakedexUrl("listing/all.json"));
 	const json = await response.json();
@@ -20,33 +23,33 @@ async function fetchAndAdd() {
 		"snake" + (json.length === 1 ? "" : "s"),
 		"in the Snakedex.",
 	].join(" ");
-	
+
 	for (const snake of json.snakes) {
 		const element = createClassElement("div", "snake");
 
 		const imageWrapper = createClassElement("div", "imagewrapper");
-		element.appendChild(imageWrapper);
+		element.append(imageWrapper);
 
 		const image = document.createElement("img");
 		image.src = snakedexUrl(getSnakeImage(snake));
-		imageWrapper.appendChild(image);
+		imageWrapper.append(image);
 
 		const content = createClassElement("div", "content");
-		element.appendChild(content);
+		element.append(content);
 
 		if (snake.name || snake.snakeNumber) {
 			const header = document.createElement("h2");
 			header.textContent = getSnakeHeader(snake);
-			content.appendChild(header);
+			content.append(header);
 		}
 
 		if (snake.description) {
 			const description = document.createElement("p");
 			description.textContent = snake.description;
-			content.appendChild(description);
+			content.append(description);
 		}
 
-		container.appendChild(element);
+		container.append(element);
 	}
 }
 fetchAndAdd();
