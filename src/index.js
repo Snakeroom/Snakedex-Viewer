@@ -1,4 +1,3 @@
-require("file-loader?name=[name].[ext]!html-minify-loader!./index.html");
 require("file-loader?name=[name].[ext]!./index.css");
 
 const container = document.getElementById("snakes");
