@@ -6,6 +6,7 @@ const snakeInfo = document.getElementById("snakeinfo");
 
 const createClassElement = require("./utils/create-class-element.js");
 const getSnakeHeader = require("./utils/get-snake-header.js");
+const getSnakeImage = require("./utils/get-snake-image.js");
 const snakedexUrl = require("./utils/snakedex-url.js");
 
 async function fetchAndAdd() {
@@ -28,7 +29,7 @@ async function fetchAndAdd() {
 		element.appendChild(imageWrapper);
 
 		const image = document.createElement("img");
-		image.src = snakedexUrl(snake.image);
+		image.src = snakedexUrl(getSnakeImage(snake));
 		imageWrapper.appendChild(image);
 
 		const content = createClassElement("div", "content");
