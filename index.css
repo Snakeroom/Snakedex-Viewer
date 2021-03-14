@@ -1,7 +1,16 @@
+html, body {
+	margin: 0;
+}
+
 body {
 	background-color: #34373e;
 	font-family: sans-serif;
 	color: #ddd;
+
+	padding-top: max(8px, env(safe-area-inset-top));
+	padding-right: max(8px, env(safe-area-inset-right));
+	padding-bottom: max(8px, env(safe-area-inset-bottom));
+	padding-left: max(8px, env(safe-area-inset-left));
 }
 
 h1, h2 {
@@ -11,10 +20,15 @@ h1, h2 {
 .snake {
 	display: flex;
 	background-color: rgba(0, 0, 0, 0.1);
+
+	margin-left: calc(env(safe-area-inset-left) * -1);
+	margin-right: calc(env(safe-area-inset-right) * -1);
 }
 
-.snake > * {
-	padding: 8px;
+@media(min-width: 500px) {
+	.snake > * {
+		padding: 8px;
+	}
 }
 
 .snake:not(:last-child) {
@@ -30,10 +44,30 @@ h1, h2 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	padding-left: max(8px, env(safe-area-inset-left));
 }
 
 .snake > .imagewrapper > img {
 	background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media(max-width: 500px) {
+	.snake > .imagewrapper {
+		width: 60px;
+		min-height: 60px;
+	}
+
+	.snake > .imagewrapper > img {
+		width: 60px;
+	}
+}
+
+.snake > .content {
+	padding-right: env(safe-area-inset-right);
+
+	overflow: hidden;
+	word-wrap: break-word;
 }
 
 .snake > .content > h2 {
