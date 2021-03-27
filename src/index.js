@@ -32,6 +32,7 @@ async function fetchAndAdd() {
 
 		const image = document.createElement("img");
 		image.src = snakedexUrl(getSnakeImage(snake));
+		image.alt = snake.snakeNumber ? "Snake #" + snake.snakeNumber : "Snake";
 		imageWrapper.append(image);
 
 		const content = createClassElement("div", "content");
