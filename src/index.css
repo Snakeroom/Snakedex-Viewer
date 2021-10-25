@@ -49,6 +49,7 @@ h1, h2 {
 }
 
 .snake > .imagewrapper > img {
+	overflow: hidden;
 	background-color: rgba(0, 0, 0, 0.2);
 }
 
