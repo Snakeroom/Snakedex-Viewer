@@ -53,4 +53,6 @@ async function fetchAndAdd() {
 		container.append(element);
 	}
 }
+
+/* eslint-disable-next-line unicorn/prefer-top-level-await */
 fetchAndAdd();
