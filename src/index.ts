@@ -1,17 +1,18 @@
 require("file-loader?name=[name].[ext]!./index.css");
 
-const container = document.getElementById("snakes");
-const snakeInfo = document.getElementById("snakeinfo");
+import { createClassElement } from "./utils/create-class-element";
+import { getSnakeHeader } from "./utils/get-snake-header";
+import { getSnakeImage } from "./utils/get-snake-image";
+import { snakedexUrl } from "./utils/snakedex-url";
 
-const createClassElement = require("./utils/create-class-element.js");
-const getSnakeHeader = require("./utils/get-snake-header.js");
-const getSnakeImage = require("./utils/get-snake-image.js");
-const snakedexUrl = require("./utils/snakedex-url.js");
-
-/**
- *
- */
 async function fetchAndAdd() {
+	const container = document.getElementById("snakes") as HTMLDivElement;
+	const snakeInfo = document.getElementById("snakeinfo") as HTMLParagraphElement;
+
+	if (snakeInfo === null) {
+		throw new Error("Snake info element not loaded yet");
+	}
+
 	const response = await fetch(snakedexUrl("listing/all.json"));
 	const json = await response.json();
 
@@ -40,8 +41,10 @@ async function fetchAndAdd() {
 
 		if (snake.name || snake.snakeNumber) {
 			const header = document.createElement("h2");
-			header.textContent = getSnakeHeader(snake);
-			content.append(header);
+			if (header !== null) {
+				header.textContent = getSnakeHeader(snake);
+				content.append(header);
+			}
 		}
 
 		if (snake.description) {
